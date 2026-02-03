@@ -10,13 +10,19 @@ int main() {
     printf("Enter money: ");
     scanf("%f", &money);
 
-    switch (item) {
-        case 1: price = 2; break;
-        case 2: price = 1.5; break;
-        case 3: price = 1; break;
+    switch(item) {
+        case 1:
+            price = 2;
+            break;
+        case 2:
+            price = 1.5;
+            break;
+        case 3:
+            price = 1;
+            break;
         default:
-            printf("Invalid item\n");
-            return 0;
+            printf("Invalid item number");
+
     }
 
     if (money >= price)
