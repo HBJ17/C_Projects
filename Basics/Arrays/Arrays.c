@@ -16,20 +16,6 @@ int main() {
     for(i = 0; i < 5; i++)
         sum += arr3[i];
     printf("Sum = %d\n", sum);
-
-    int arr4[5] = {3, 7, 2, 9, 4};
-    int max = arr4[0];
-    for(i = 1; i < 5; i++)
-        if(arr4[i] > max)
-            max = arr4[i];
-    printf("Max = %d\n", max);
-
-    int arr5[5] = {1, 2, 4, 7, 8};
-    int count = 0;
-    for(i = 0; i < 5; i++)
-        if(arr5[i] % 2 == 0)
-            count++;
-    printf("Even count = %d\n", count);
-
+    
     return 0;
 }
