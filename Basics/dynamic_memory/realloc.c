@@ -14,7 +14,15 @@ int main()
         scanf("%d", &arr[i]);
 
     // increase size to 5 integers
-    arr = (int*)realloc(arr, 5 * sizeof(int));
+    int *temp = realloc(arr,5*sizeof(int));
+
+    if(temp != NULL) {
+        arr = temp; // assign the new pointer to arr
+    } else {
+        printf("Memory reallocation failed\n");
+        free(arr); // free the original memory
+        return 1; // exit with error code
+    }
 
     printf("Enter 2 more numbers:\n");
     for(i = 3; i < 5; i++)
