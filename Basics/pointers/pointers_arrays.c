@@ -2,7 +2,7 @@
 
 int main() {
     int arr[3] = {10, 20, 30};
-    int *p = arr;
+    int *p = arr; //&arr[0]
 
     printf("%d\n", *p);      
     printf("%d\n", *(p+1));  

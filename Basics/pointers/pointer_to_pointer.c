@@ -2,14 +2,14 @@
 
 int main() {
     int a;
-    int *p;
-    int **q;
+    int *p; //pointer
+    int **q; //pointer to pointer
 
     a = 10;
-    p = &a;
-    q = &p;
+    p = &a; //p is storing the address of a
+    q = &p; //q is storing the address of p
 
-    printf("%d",q);
+    printf("%d",**q);
 
     return 0;
 }
