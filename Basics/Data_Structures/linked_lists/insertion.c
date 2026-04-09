@@ -47,8 +47,41 @@ struct Node* insertend(struct Node* head,int value) {
     return head;
 };
 
+struct Node* insertatposition(struct Node* head, int value, int pos) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+
+    if (newNode == NULL) {
+        printf("Memory allocation failed\n");
+        return head;
+    }
+
+    newNode->data = value;
+
+    if (pos == 1) {
+        newNode->next = head;
+        return newNode;
+    }
+
+    struct Node* temp = head;
+
+    for (int i = 1; i < pos - 1 && temp != NULL; i++) {
+        temp = temp->next;
+    }
+
+    if (temp == NULL) {
+        printf("Invalid position\n");
+        free(newNode);
+        return head;
+    }
+
+    newNode->next = temp->next;
+    temp->next = newNode;
+
+    return head;
+}
+
 int main() {
-    int n,i,value;
+    int n,i,value,pos;
 
     printf("Enter number of nodes = ");
     scanf("%d",&n);
@@ -90,8 +123,8 @@ int main() {
     printf(" -> NULL");
 
 
-    printf("\nNow insertion at beginning.\n");
-    printf("\nEnter value for the node = ");
+    printf("\nInsertion at beginning.\n");
+    printf("\nEnter value for the new node = ");
     scanf("%d",&value);
 
     head = insertbegin(head,value);
@@ -108,10 +141,29 @@ int main() {
     printf(" -> NULL");
 
     printf("\nInsertion at end.\n");
-    printf("Enter the value to insert = ");
+    printf("Enter the value of new node = ");
     scanf("%d",&value);
 
     head = insertend(head,value);
+
+    printf("\nLinked LIsts\n");
+    temp = head;
+    while(temp!=NULL) {
+        printf("%d",temp->data);
+        if(temp->next != NULL) {
+            printf(" -> ");
+        }
+        temp = temp->next;
+    }
+    printf(" -> NULL");
+
+    printf("\nInsertion at specific Position.\n");
+    printf("\nEnter position of new node = ");
+    scanf("%d",&pos);
+    printf("\nEnter value for the new node = ");
+    scanf("%d",&value);
+
+    head = insertatposition(head,value,pos);
 
     printf("\nLinked LIsts\n");
     temp = head;
