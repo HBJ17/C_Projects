@@ -21,6 +21,32 @@ struct Node* insertbegin(struct Node* head,int value) {
     return head;
 };
 
+struct Node* insertend(struct Node* head,int value) {
+    struct Node* newnode = malloc(sizeof(struct Node));
+
+    if(newnode == NULL) {
+        printf("Memory allocation failed!");
+        return head;
+    }
+
+    newnode->data = value;
+    newnode->next = NULL;
+
+    if(head == NULL) {
+        return newnode;
+    }
+
+    struct Node* temp = head;
+
+    while(temp->next != NULL) {
+        temp = temp->next;
+    }
+
+    temp->next = newnode;
+
+    return head;
+};
+
 int main() {
     int n,i,value;
 
@@ -69,6 +95,23 @@ int main() {
     scanf("%d",&value);
 
     head = insertbegin(head,value);
+
+    printf("\nLinked LIsts\n");
+    temp = head;
+    while(temp!=NULL) {
+        printf("%d",temp->data);
+        if(temp->next != NULL) {
+            printf(" -> ");
+        }
+        temp = temp->next;
+    }
+    printf(" -> NULL");
+
+    printf("\nInsertion at end.\n");
+    printf("Enter the value to insert = ");
+    scanf("%d",&value);
+
+    head = insertend(head,value);
 
     printf("\nLinked LIsts\n");
     temp = head;
